@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'tftp::file' do
+describe 'mutftp::file' do
 
   let(:title) { 'sample' }
 
@@ -10,7 +10,7 @@ describe 'tftp::file' do
                     :path            => '/usr/local/bin:/usr/bin:/bin', } }
 
     it {
-      should contain_class('tftp')
+      should contain_class('mutftp')
       should contain_file('/srv/tftp/sample').with({
         'ensure'  => 'file',
         'owner'   => 'tftp',
@@ -28,7 +28,7 @@ describe 'tftp::file' do
                     :path                   => '/usr/local/bin:/usr/bin:/bin', } }
 
     it {
-      should contain_class('tftp')
+      should contain_class('mutftp')
       should contain_file('/var/lib/tftpboot/sample').with({
         'ensure'  => 'file',
         'owner'   => 'tftp',
@@ -45,7 +45,7 @@ describe 'tftp::file' do
                     :path            => '/usr/local/bin:/usr/bin:/bin', } }
 
     it {
-      should contain_class('tftp')
+      should contain_class('mutftp')
       should contain_file('/var/lib/tftpboot/sample').with({
         'ensure'  => 'file',
         'owner'   => 'nobody',
@@ -67,7 +67,7 @@ describe 'tftp::file' do
                     :path            => '/usr/local/bin:/usr/bin:/bin', } }
 
     it {
-      should contain_class('tftp')
+      should contain_class('mutftp')
       should contain_file('/srv/tftp/sample').with({
         'ensure'  => 'directory',
         'owner'   => 'root',
@@ -107,7 +107,7 @@ describe 'tftp::file' do
                    :path            => '/usr/local/bin:/usr/bin:/bin', }}
 
     it {
-      should contain_class('tftp')
+      should contain_class('mutftp')
       should contain_file('/srv/tftp/sample').with({
         'ensure'       => 'directory',
         'owner'        => 'tftp',
@@ -130,7 +130,7 @@ describe 'tftp::file' do
                     :path               => '/usr/local/bin:/usr/bin:/bin', } }
 
     it {
-      should contain_class('tftp')
+      should contain_class('mutftp')
       should contain_file('/srv/tftp/sample').with({
         'ensure' => 'directory',
         'mode'   => '0755',
@@ -147,7 +147,7 @@ describe 'tftp::file' do
                     :path               => '/usr/local/bin:/usr/bin:/bin', } }
 
     it {
-      should contain_class('tftp')
+      should contain_class('mutftp')
       should contain_file('/srv/tftp/sample').with({
         'ensure' => 'file',
         'mode'   => '0755',
@@ -165,7 +165,7 @@ describe 'tftp::file' do
                     :caller_module_name => 'acme',
                     :path               => '/usr/local/bin:/usr/bin:/bin', } }
     it {
-      should contain_class('tftp')
+      should contain_class('mutftp')
       should contain_file('/srv/tftp/sample').with({
         'ensure'  => 'file',
         'mode'    => '0755',

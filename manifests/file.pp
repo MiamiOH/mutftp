@@ -1,4 +1,4 @@
-# Define: tftp::file
+# Define: mutftp::file
 #
 # Parameters:
 #
@@ -19,15 +19,15 @@
 #
 # Usage:
 #
-#   tftp::file { 'pxelinux.0':
+#   mutftp::file { 'pxelinux.0':
 #     source => 'puppet:///modules/acme/pxelinux.0',
 #   }
 #
-#   tftp::file { 'pxelinux.cfg':
+#   mutftp::file { 'pxelinux.cfg':
 #     ensure => directory,
 #   }
 #
-define tftp::file (
+define mutftp::file (
   $ensure       = file,
   $owner        = undef,
   $group        = undef,
@@ -39,19 +39,19 @@ define tftp::file (
   $content      = undef,
   $source       = undef
 ) {
-  include 'tftp'
-  include 'tftp::params'
+  include 'mutftp'
+  include 'mutftp::params'
 
   if $owner {
     $tftp_owner = $owner
   } else {
-    $tftp_owner = $tftp::params::username
+    $tftp_owner = $mutftp::params::username
   }
 
   if $group {
     $tftp_group = $group
   } else {
-    $tftp_group = $tftp::params::username
+    $tftp_group = $mutftp::params::username
   }
 
   if $source {
@@ -67,7 +67,7 @@ define tftp::file (
     $source_real = undef
   }
 
-  file { "${tftp::directory}/${name}":
+  file { "${mutftp::directory}/${name}":
     ensure       => $ensure,
     owner        => $tftp_owner,
     group        => $tftp_group,
@@ -78,6 +78,6 @@ define tftp::file (
     recurselimit => $recurselimit,
     content      => $content,
     source       => $source_real,
-    require      => Class['tftp'],
+    require      => Class['mutftp'],
   }
 }

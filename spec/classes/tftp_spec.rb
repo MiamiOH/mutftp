@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'tftp', :type => :class do
+describe 'mutftp', :type => :class do
 
   describe 'when deploying on debian as standalone' do
     let(:facts) { { :operatingsystem  => 'Debian',

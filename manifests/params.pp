@@ -1,7 +1,7 @@
-# Class: tftp::params
+# Class: mutftp::params
 #
 #   TFTP class parameters.
-class tftp::params {
+class mutftp::params {
   $address    = '0.0.0.0'
   $port       = '69'
   $options    = '--secure'

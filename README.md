@@ -22,7 +22,7 @@ Parameters:
 Example:
 
 ```puppet
-class tftp {
+class mutftp {
   directory => '/opt/tftp',
   address   => $::ipaddress,
   options   => '--ipv6 --timeout 60',
@@ -47,15 +47,15 @@ Parameters:
 Example:
 
 ```puppet
-tftp::file { 'pxelinux.0':
+mutftp::file { 'pxelinux.0':
   source => 'puppet:///modules/acme/pxelinux.0',
 }
 
-tftp::file { 'pxelinux.cfg':
+mutftp::file { 'pxelinux.cfg':
   ensure => directory,
 }
 
-tftp::file { 'pxelinux.cfg/default':
+mutftp::file { 'pxelinux.cfg/default':
   ensure => file,
   source => 'puppet:///modules/acme/pxelinux.cfg/default',
 }
@@ -64,7 +64,7 @@ tftp::file { 'pxelinux.cfg/default':
 The last example can be abbreviated to the following if it's in the acme module:
 
 ```puppet
-tftp::file { 'pxelinux.cfg/default': }
+mutftp::file { 'pxelinux.cfg/default': }
 ```
 
 ## Example
@@ -79,12 +79,12 @@ file { '/opt/tftp':
   ensure => directory,
 }
 
-class { 'tftp':
+class { 'mutftp':
   directory => '/opt/tftp',
   address   => $::ipaddress,
 }
 
-tftp::file { 'pxelinux.0':
+mutftp::file { 'pxelinux.0':
   source => 'puppet:///modules/acme/pxelinux.0',
 }
 ```

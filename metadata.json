@@ -1,11 +1,11 @@
 {
-  "name": "puppetlabs-tftp",
+  "name": "MiamiOH-mutftp",
   "version": "1.0.0",
   "author": "puppetlabs",
   "summary": "Installs and manages TFTP service and configuration.",
   "license": "Apache-2.0",
   "source": "https://github.com/puppetlabs/puppetlabs-tftp",
-  "project_page": "https://github.com/puppetlabs/puppetlabs-tftp",
+  "project_page": "https://github.com/MiamiOH/mutftp",
   "issues_url": "https://tickets.puppetlabs.com/browse/MODULES",
   "operatingsystem_support": [
     {

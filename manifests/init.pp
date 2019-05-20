@@ -1,4 +1,4 @@
-# Class: tftp
+# Class: mutftp
 #
 # Parameters:
 #
@@ -17,23 +17,23 @@
 #
 # Usage:
 #
-#   class { 'tftp':
+#   class { 'mutftp':
 #     directory => '/opt/tftp',
 #     address   => $::ipaddress,
 #     options   => '--ipv6 --timeout 60',
 #   }
 #
-class tftp (
-  $username   = $tftp::params::username,
-  $directory  = $tftp::params::directory,
-  $address    = $tftp::params::address,
-  $port       = $tftp::params::port,
-  $options    = $tftp::params::options,
-  $inetd      = $tftp::params::inetd,
-  $package    = $tftp::params::package,
-  $binary     = $tftp::params::binary,
-  $defaults   = $tftp::params::defaults,
-) inherits tftp::params {
+class mutftp (
+  $username   = $mutftp::params::username,
+  $directory  = $mutftp::params::directory,
+  $address    = $mutftp::params::address,
+  $port       = $mutftp::params::port,
+  $options    = $mutftp::params::options,
+  $inetd      = $mutftp::params::inetd,
+  $package    = $mutftp::params::package,
+  $binary     = $mutftp::params::binary,
+  $defaults   = $mutftp::params::defaults,
+) inherits mutftp::params {
   $virtual_package = 'tftpd-hpa'
 
   package { $virtual_package:
@@ -77,7 +77,7 @@ class tftp (
     $svc_enable = true
   }
 
-  $start = $tftp::params::provider ? {
+  $start = $mutftp::params::provider ? {
     'base'  => "${binary} -l -a ${address}:${port} -u ${username} ${options} ${directory}",
     default => undef
   }
@@ -85,8 +85,8 @@ class tftp (
   service { 'tftpd-hpa':
     ensure    => $svc_ensure,
     enable    => $svc_enable,
-    provider  => $tftp::params::provider,
-    hasstatus => $tftp::params::hasstatus,
+    provider  => $mutftp::params::provider,
+    hasstatus => $mutftp::params::hasstatus,
     pattern   => '/usr/sbin/in.tftpd',
     start     => $start,
   }
